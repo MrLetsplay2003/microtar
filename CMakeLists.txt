@@ -8,9 +8,11 @@ target_include_directories(microtar PUBLIC "src")
 set_target_properties(microtar PROPERTIES PUBLIC_HEADER src/microtar.h)
 
 add_library(microtar_shared SHARED $<TARGET_OBJECTS:microtar>)
+target_link_libraries(microtar_shared microtar)
 set_target_properties(microtar_shared PROPERTIES OUTPUT_NAME microtar)
 
 add_library(microtar_static STATIC $<TARGET_OBJECTS:microtar>)
+target_link_libraries(microtar_static microtar)
 set_target_properties(microtar_static PROPERTIES OUTPUT_NAME microtar)
 
 add_compile_options(-Wall)
